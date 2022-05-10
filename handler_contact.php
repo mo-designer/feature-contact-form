@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $to      = 'ananidijon21@yahoo.fr';
 $username = strip_tags($_POST['data-username']); 
 $mail = strip_tags($_POST['data-mail']);
@@ -10,3 +12,7 @@ $headers = 'From: ' . $mail . "\r\n" .
 'X-Mailer: PHP/' . phpversion();
 
 mail($to, $subject, $message, $headers);
+
+$_SESSION['info'] = "Your message has been sent." ;
+header('Location: form_contact.php');
+

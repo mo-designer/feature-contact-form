@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,15 @@
     <title>Form Contact</title>
 </head>
 <body>
+
+<p>
+<?php
+    if ($_SESSION) {
+        echo $_SESSION['info'] ;
+        unset($_SESSION['info']);
+    }
+?>
+</p>
 
 <form action="handler_contact.php" method="post">
     <p>
