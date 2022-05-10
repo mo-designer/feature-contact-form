@@ -41,7 +41,7 @@ session_start();
     </p>
 
     <p>
-        <input type="submit" value="Send">
+        <input type="submit" value="Send" name="data-submit">
     </p>
 </form>
     
