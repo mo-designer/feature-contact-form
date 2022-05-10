@@ -9,6 +9,8 @@
 - [header("Location: http://www.example.com/")](https://www.php.net/manual/fr/function.header)
 - [mail()](https://www.php.net/manual/fr/function.mail)
 - [session_start()](https://www.php.net/manual/fr/function.session-start.php)
+- [isset()](https://www.php.net/manual/fr/function.isset.php?msclkid=d036078ad06911eca05b46679ab90e77)
+- [empty()](https://www.php.net/manual/fr/function.empty)
 
 ### Superglobales
 - [$_POST](https://www.php.net/manual/fr/reserved.variables.post)
