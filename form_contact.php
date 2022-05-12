@@ -1,13 +1,6 @@
 <?php include("include_header.php") ?>
 
-<p>
-<?php
-    if ($_SESSION) {
-        echo $_SESSION['info'] ;
-        unset($_SESSION['info']);
-    }
-?>
-</p>
+
 
 <form action="handler_contact.php" method="post">
     <p>
