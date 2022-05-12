@@ -11,16 +11,7 @@ $contact_id=strip_tags($_GET['contact_id']);
 //echo $contact_id;
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<?php include("include_header.php") ?>
  
 
 <?php
@@ -47,8 +38,7 @@ if (isset( $_GET['contact_id'] ) && !empty( $_GET['contact_id'])) {
 }
 ?>
 
+<a href="index.php"><button>Retour</button></a>
 
 
-
-</body>
-</html>
+<?php include("include_footer.php") ?>

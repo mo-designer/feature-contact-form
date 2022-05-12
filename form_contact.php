@@ -1,17 +1,4 @@
-<?php
-session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact form with handler in php.">
-    <title>Form Contact</title>
-</head>
-<body>
+<?php include("include_header.php") ?>
 
 <p>
 <?php
@@ -44,6 +31,5 @@ session_start();
         <input type="submit" value="Send" name="data-submit">
     </p>
 </form>
-    
-</body>
-</html>
+<a href="index.php"><button>Retour</button></a>  
+<?php include("include_footer.php") ?>
