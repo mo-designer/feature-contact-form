@@ -1,19 +1,15 @@
 <?php
 
-$contact_id=strip_tags($_GET['contact_id']);
-
 require_once("db_connect.php");
-$sql='SELECT * FROM `tbl_contact` WHERE `contact_id`=:contact_id';
+$sql='SELECT contact_id FROM `tbl_contact` ';
 $query = $dbh->prepare($sql);
-$query->bindValue(':contact_id', $contact_id, PDO::PARAM_INT);
 $query->execute();
-$contact=$query->fetch();
+$contacts=$query->fetchAll(PDO::FETCH_ASSOC);
+//var_dump($contacts);
+//echo "<br>";
+$contact_id=strip_tags($_GET['contact_id']);
+//echo $contact_id;
 
-if (isset( $_GET['contact_id'] ) && !empty( $_GET['contact_id'])) {
-   
-}else {
-    echo "non";
-}
 ?>
 
 <!DOCTYPE html>
@@ -27,10 +23,32 @@ if (isset( $_GET['contact_id'] ) && !empty( $_GET['contact_id'])) {
 <body>
  
 
-<h1><?=$contact["contact_subject"] ?></h1>
-<p>Auteur : <?=$contact["contact_username"] ?>, <a href="mailto:<?=$contact["contact_mail"] ?>"><?=$contact["contact_mail"] ?></a> </p>
-<p>Message :  </p>
-<p>  <?=$contact["contact_message"] ?> </p>
+<?php
+if (isset( $_GET['contact_id'] ) && !empty( $_GET['contact_id'])) {
+    foreach ($contacts as $contact_key ) {
+        // echo $contact["contact_id"];
+         if ($contact_key["contact_id"]==$contact_id) {
+            $sql= 'SELECT * FROM `tbl_contact` WHERE `contact_id`=:contact_id';
+            $query = $dbh->prepare($sql);
+            $query->bindValue(':contact_id', $contact_id, PDO::PARAM_INT);
+            $query->execute();
+            $contact=$query->fetch();
+            echo '<h1>'.$contact["contact_subject"].'</h1>';
+            echo '<p>Auteur : '. $contact["contact_username"] ; 
+            echo '<p>Email : <a href="mailto:'.$contact["contact_mail"] .'">' .$contact["contact_mail"] .'</a> </p>';
+            echo '<p>Message :  </p>';
+            echo '<p>'. $contact["contact_message"] . '</p>';
+         }else {
+            // echo "problem";
+        }
+    }  
+}else {
+    echo "non";
+}
+?>
+
+
+
 
 </body>
 </html>
