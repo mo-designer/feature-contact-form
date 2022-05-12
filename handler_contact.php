@@ -18,10 +18,21 @@ if (isset( $_POST['data-username'] ) && !empty( $_POST['data-username'])
 
     mail($to, $subject, $message, $headers);
 
+    require_once("db_connect.php");
+    $sql='INSERT INTO `tbl_contact` (`contact_username`, `contact_mail`, `contact_subject`, `contact_message`) VALUES (:contact_username, :contact_mail, :contact_subject, :contact_message);';
+    $query = $dbh->prepare($sql);
+    $query->bindValue(':contact_username', $username, PDO::PARAM_STR);
+    $query->bindValue(':contact_mail', $mail, PDO::PARAM_STR);
+    $query->bindValue(':contact_subject', $subject, PDO::PARAM_STR);
+    $query->bindValue(':contact_message', $message, PDO::PARAM_STR);
+    $query->execute();
+
+
     $_SESSION['info'] = "<p style='color:green'>Your message has been sent.</p>" ;
     header('Location: form_contact.php');
 
 } else {
+
 
     $_SESSION['info'] = "<p style='color:red'>There is a problem, your message was not sent...</p>" ;
     header('Location: form_contact.php');

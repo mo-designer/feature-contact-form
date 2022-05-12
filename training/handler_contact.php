@@ -16,3 +16,4 @@ $headers = array(
 mail($to, $subject, $message, $headers);
 $_SESSION['success'] = "Votre email a été envoyé !" ;
 header('Location: form_contact.php');
+
