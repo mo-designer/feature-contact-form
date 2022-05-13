@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 if (isset( $_POST['data-username'] ) && !empty( $_POST['data-username'])
 && isset( $_POST['data-password'] ) && !empty( $_POST['data-password'])) {
 
@@ -17,6 +19,7 @@ var_dump($hash);
 
 if ( password_verify($password, $hash['user_password']) ) {
     $_SESSION['info'] = 'Vous êtes connecté.';
+    $_SESSION['username'] =$usernames ;
     header('Location: view_contact.php');   
 }else {
     $_SESSION['info'] = 'Le mot de passe est invalide.';
