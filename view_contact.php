@@ -9,7 +9,7 @@ $contacts=$query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php include("include_header.php") ?>
-  <h1>Administration des ContactsW</h1>
+  <h1>Administration des Contacts</h1>
   <?php foreach ($contacts as $contact ) { ?>
 <p><a href="view_contact-single.php?contact_id=<?= $contact['contact_id']?>"><?= $contact['contact_subject']?></a></p>
       <?php } ?>
