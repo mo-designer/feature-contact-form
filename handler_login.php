@@ -3,9 +3,10 @@ session_start();
 if (isset( $_POST['data-username'] ) && !empty( $_POST['data-username'])
 && isset( $_POST['data-password'] ) && !empty( $_POST['data-password'])) {
 
-    $username=strip_tags($_POST['data-username']);
-    $password=strip_tags($_POST['data-password']);
-    require_once("db_connect.php");
+$username=strip_tags($_POST['data-username']);
+$password=strip_tags($_POST['data-password']);
+
+require_once("db_connect.php");
 $sql='SELECT user_password FROM `tbl_users` WHERE `user_username`= :user_username ';
 $query = $dbh->prepare($sql);
 $query->bindValue(':user_username', $username, PDO::PARAM_STR);
